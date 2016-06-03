@@ -1,10 +1,10 @@
-var pgp = require('pg-promise')();
+var pgp = require('pg-promise')(),
+    pg = require('pg');
 
 var db = pgp({
   host: 'localhost',
   port: 5432
 });
-
 
 db.query('SELECT session_user, current_user')
 .then(function(results) {
@@ -27,6 +27,22 @@ db.query('SELECT session_user, current_user')
   process.exit(0);
 })
 .catch(function(err) {
-  console.log('OH NO', err);
-  process.exit(-1);
+  console.error('OH NO', err);
+
+  console.log('Let\'s try with another library');
+  var client = new pg.Client('postgres://localhost:5432');
+  client.connect(function(err) {
+    if (err) {
+      return console.error('blast!', err);
+    }
+
+    client.query('ALTER TABLE foo OWNER TO session_user', function(err, result) {
+      if (err) {
+        return console.error('This one didn\'t work either', err);
+      }
+
+      console.log('This one worked!');
+      process.exit(-1);
+    });
+  });
 });

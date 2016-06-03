@@ -8,6 +8,7 @@
     "url": "git://github.com/scdf/postgres-session-user.git"
   },
   "dependencies": {
+    "pg": "^4.5.6",
     "pg-promise": "^4.4.0"
   }
 }
