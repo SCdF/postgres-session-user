@@ -36,9 +36,10 @@ db.query('SELECT session_user, current_user')
       return console.error('blast!', err);
     }
 
-    client.query('ALTER TABLE foo OWNER TO session_user', function(err, result) {
+    client.query('ALTER TABLE foo OWNER TO asdfas', function(err, result) {
       if (err) {
-        return console.error('This one didn\'t work either', err);
+        console.error('This one didn\'t work either', err);
+        process.exit(-1);
       }
 
       console.log('This one worked!');
