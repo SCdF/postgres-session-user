@@ -8,7 +8,7 @@ Locally (with PostgreSQL installed), but it will fail on TravisCI:
  
 ![build status](https://travis-ci.org/SCdF/postgres-session-user.svg?branch=master)
 
-^-- the error is:
+^-- the error in [the build](https://travis-ci.org/SCdF/postgres-session-user/builds/135073294) is:
 
 ```
 [error: syntax error at or near "session_user"]
