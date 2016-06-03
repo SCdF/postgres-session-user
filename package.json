@@ -1,0 +1,13 @@
+{
+  "name": "postgres-session-user",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/scdf/postgres-session-user.git"
+  },
+  "dependencies": {
+    "pg-promise": "^4.4.0"
+  }
+}
