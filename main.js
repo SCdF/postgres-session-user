@@ -4,10 +4,9 @@ var pgp = require('pg-promise')(),
 var TABLE = "psu_test_table";
 var ROLE =  "psu_test_role";
 
-var db = pgp({
-  host: 'localhost',
-  port: 5432
-});
+var POSTGRES_CONNECTION_STRING = 'postgres://localhost:5432';
+
+var db = pgp(POSTGRES_CONNECTION_STRING);
 
 // First just some quick prep to make sure it can be re-run locally
 db.query('DROP TABLE IF EXISTS ' + TABLE)
@@ -38,7 +37,7 @@ db.query('DROP TABLE IF EXISTS ' + TABLE)
   console.error('OH NO', err);
 
   console.log('Let\'s try with another library');
-  var client = new pg.Client('postgres://localhost:5432');
+  var client = new pg.Client(POSTGRES_CONNECTION_STRING);
   client.connect(function(err) {
     if (err) {
       return console.error('blast!', err);
