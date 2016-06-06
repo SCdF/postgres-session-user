@@ -1,5 +1,5 @@
 var pgp = require('pg-promise')(),
-    pg = require('pg');
+    pg = pgp.pg;
 
 var TABLE = "psu_test_table";
 var ROLE =  "psu_test_role";
