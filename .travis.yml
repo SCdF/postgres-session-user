@@ -3,7 +3,7 @@ node_js:
    - "5"
 
 addons:
-   postgresql: "9.4"
+   postgresql: "9.4.7"
 
 script:
   - npm install
