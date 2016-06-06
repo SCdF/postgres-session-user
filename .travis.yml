@@ -5,6 +5,8 @@ node_js:
 addons:
    postgresql: "9.4.7"
 
+sudo: "required"
+
 script:
   - npm install
   - node main.js
