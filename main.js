@@ -41,21 +41,22 @@ db.query('SELECT version()')
 .catch(function(err) {
   console.error('OH NO', err);
 
-  console.log('Let\'s try with another library');
-  var client = new pg.Client(POSTGRES_CONNECTION_STRING);
-  client.connect(function(err) {
-    if (err) {
-      return console.error('blast!', err);
-    }
+  process.exit(-1);
+  // console.log('Let\'s try with another library');
+  // var client = new pg.Client(POSTGRES_CONNECTION_STRING);
+  // client.connect(function(err) {
+  //   if (err) {
+  //     return console.error('blast!', err);
+  //   }
 
-    client.query('ALTER TABLE ' + TABLE + ' OWNER TO session_user', function(err, result) {
-      if (err) {
-        console.error('This one didn\'t work either', err);
-        process.exit(-1);
-      }
+  //   client.query('ALTER TABLE ' + TABLE + ' OWNER TO session_user', function(err, result) {
+  //     if (err) {
+  //       console.error('This one didn\'t work either', err);
+  //       process.exit(-1);
+  //     }
 
-      console.log('This one worked!');
-      process.exit(-1);
-    });
-  });
+  //     console.log('This one worked!');
+  //     process.exit(-1);
+  //   });
+  // });
 });
