@@ -9,28 +9,33 @@ var POSTGRES_CONNECTION_STRING = 'postgres://localhost:5432';
 var db = pgp(POSTGRES_CONNECTION_STRING);
 
 // First just some quick prep to make sure it can be re-run locally
-db.query('DROP TABLE IF EXISTS ' + TABLE)
-.then(function() {
-  return db.query('DROP ROLE IF EXISTS ' + ROLE);
-}).then(function() {
-  return db.query('SELECT session_user, current_user')
-}).then(function(results) {
-  console.log(results);
+// db.query('DROP TABLE IF EXISTS ' + TABLE)
+// .then(function() {
+//   return db.query('DROP ROLE IF EXISTS ' + ROLE);
+// }).then(function() {
+//   return db.query('SELECT session_user, current_user')
+// }).then(function(results) {
+//   console.log(results);
 
-  console.log('Create table succeeded');
-  return db.query('CREATE TABLE ' + TABLE + ' (bar int)');
-}).then(function() {
-  console.log('Create role');
-  return db.query('CREATE ROLE ' + ROLE);
-}).then(function() {
-  console.log('Alter table to hard-coded role');
-  return db.query('ALTER TABLE ' + TABLE + ' OWNER TO ' + ROLE);
-}).then(function() {
-  console.log('Alter table to session_user');
-  return db.query('ALTER TABLE ' + TABLE + ' OWNER TO session_user');
-})
-.then(function() {
-  console.log('Done!');
+//   console.log('Create table succeeded');
+//   return db.query('CREATE TABLE ' + TABLE + ' (bar int)');
+// }).then(function() {
+//   console.log('Create role');
+//   return db.query('CREATE ROLE ' + ROLE);
+// }).then(function() {
+//   console.log('Alter table to hard-coded role');
+//   return db.query('ALTER TABLE ' + TABLE + ' OWNER TO ' + ROLE);
+// }).then(function() {
+//   console.log('Alter table to session_user');
+//   return db.query('ALTER TABLE ' + TABLE + ' OWNER TO session_user');
+// })
+// .then(function() {
+//   console.log('Done!');
+//   process.exit(0);
+// })
+db.query('SELECT version()')
+.then(function(result) {
+  console.log(result);
   process.exit(0);
 })
 .catch(function(err) {
